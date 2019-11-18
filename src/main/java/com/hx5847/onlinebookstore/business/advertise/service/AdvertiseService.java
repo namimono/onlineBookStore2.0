@@ -65,15 +65,19 @@ public class AdvertiseService {
     public Result updateAndInsert(Advertisement advertisement) {
         if (advertisement.getAdvId() == null){
             String location = advertisement.getLocation();
-
+            //如果添加的是首图则不需要检验
+            if (advertisement.getLocation().equals("1")){
+                int flag = advertisementMapper.insert(advertisement);
+                return Result.result(flag,"新增成功","新增失败");
+            }
             //判断新增位置是否有记录了
             Integer num = advertisementMapper.selectLocationCount(location);
             if(num >=1){
                 return Result.result(ResultCode.FAIL, "该位置已经有广告了",null);
+            }else {
+                int flag = advertisementMapper.insert(advertisement);
+                return Result.result(flag,"新增成功","新增失败");
             }
-
-            int flag = advertisementMapper.insert(advertisement);
-            return Result.result(flag,"新增成功","新增失败");
         }else{
             int flag = advertisementMapper.updateAdvertisement(advertisement);
             return Result.result(flag,"修改成功","修改失败");

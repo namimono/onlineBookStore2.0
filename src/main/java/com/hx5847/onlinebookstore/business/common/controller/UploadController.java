@@ -24,8 +24,8 @@ public class UploadController {
 
     //上传文件到临时文件公共接口
     @PostMapping("/uploadFileToTem")
-    public Result uploadFileToTem(@RequestParam MultipartFile multipartFile, @RequestParam String dir, @RequestParam Integer flag) {
-        return uploadService.uploadFile(multipartFile, dir,flag);
+    public Result uploadFileToTem(@RequestParam MultipartFile multipartFile, @RequestParam String dir) {
+        return uploadService.uploadFile(multipartFile, dir);
     }
 
 

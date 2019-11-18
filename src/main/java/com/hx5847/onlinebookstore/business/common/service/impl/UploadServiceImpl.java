@@ -45,22 +45,20 @@ public class UploadServiceImpl implements UploadService {
     private String prefix;
 
     @Override
-    public Result uploadFile(MultipartFile multipartFile, String dir, Integer flag) {
+    public Result uploadFile(MultipartFile multipartFile, String dir) {
 
         //图片保存的id
         String fileId = Utils.getUUID();
         //获得处理后的文件名
         String fileName = Utils.getFileSaveName(multipartFile, fileId);
         //临时文件
-        if (flag == 1) {
-            //保存的文件路径
-            String datePath = Utils.getNowFormat(new Date());
-            String filePath = temporaryFilePath + "/" + datePath + "/" + fileName;
-            if (copyFile(multipartFile, filePath)) {
-                return Result.result(0, "上传成功", "上传失败");
-            }
-            return Result.result(1, "上传成功", "上传失败", new UploadDto(fileName, temPrefix + datePath + "/" + fileName));
+        //保存的文件路径
+        String datePath = Utils.getNowFormat(new Date());
+        String filePath = temporaryFilePath + "/" + datePath + "/" + fileName;
+        if (copyFile(multipartFile, filePath)) {
+            return Result.result(0, "上传成功", "上传失败");
         }
+        return Result.result(1, "上传成功", "上传失败", new UploadDto(fileName, temPrefix + datePath + "/" + fileName));
 
 //        //正式文件
 //        if (flag == 2) {
@@ -72,7 +70,6 @@ public class UploadServiceImpl implements UploadService {
 //            return Result.result(1, "上传成功", "上传失败", new UploadDto(fileName, prefix + dir + "/" + fileName));
 //        }
 
-        return Result.result(0, "上传成功", "上传失败");
     }
 
 

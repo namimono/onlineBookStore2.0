@@ -15,8 +15,7 @@ public interface UploadService {
      *
      * @param multipartFile 上传的文件
      * @param dir           详细文件夹
-     * @param flag          1：临时文件，2：正式文件
      * @return 返回信息
      */
-    Result uploadFile(MultipartFile multipartFile, String dir, Integer flag);
+    Result uploadFile(MultipartFile multipartFile, String dir);
 }

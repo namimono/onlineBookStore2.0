@@ -86,6 +86,26 @@
             <version>4.1.0</version>
         </dependency>
 
+        <!--通用mapper依赖-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+
+        <!--&lt;!&ndash; log4j2日志，实现切面编程 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
+            <!--<version>2.1.2.RELEASE</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; springAOP &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-aop</artifactId>-->
+            <!--<version>2.1.4.RELEASE</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>

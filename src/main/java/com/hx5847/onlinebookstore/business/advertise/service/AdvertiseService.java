@@ -75,7 +75,7 @@ public class AdvertiseService {
             int flag = advertisementMapper.insert(advertisement);
             return Result.result(flag,"新增成功","新增失败");
         }else{
-            int flag = advertisementMapper.updateByPrimaryKeySelective(advertisement);
+            int flag = advertisementMapper.updateAdvertisement(advertisement);
             return Result.result(flag,"修改成功","修改失败");
         }
 

@@ -3,6 +3,8 @@ package com.hx5847.onlinebookstore.business.advertise.controller;
 import com.hx5847.onlinebookstore.business.advertise.model.Advertisement;
 import com.hx5847.onlinebookstore.business.advertise.service.AdvertiseService;
 import com.hx5847.onlinebookstore.config.result.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
+@Api(tags = "广告管理")
 @RestController
 public class AdvertiseController {
     @Autowired
@@ -57,6 +60,7 @@ public class AdvertiseController {
      * @return
      * @throws IOException
      */
+    @ApiOperation(value = "新增或更新广告")
     @PostMapping(value = "/updateAdvertise")
     public Result updateAdvertise(@RequestBody  Advertisement advertisement) throws IOException {
         return advertiseService.updateAndInsert(advertisement);

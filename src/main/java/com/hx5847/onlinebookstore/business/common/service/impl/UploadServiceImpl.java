@@ -20,23 +20,9 @@ import java.util.Date;
 @Service
 public class UploadServiceImpl implements UploadService {
 
-    /**
-     * 临时文件的目录
-     */
-    @Value("${file.temporaryFile}")
-    private String temporaryFilePath;
 
-    /**
-     * 临时文件的目录
-     */
     @Value("${file.realFile}")
     private String realFile;
-
-    /**
-     * 临时文件回显地址
-     */
-    @Value("${file.temPrefix}")
-    private String temPrefix;
 
     /**
      * 真实文件回显地址
@@ -53,12 +39,11 @@ public class UploadServiceImpl implements UploadService {
         String fileName = Utils.getFileSaveName(multipartFile, fileId);
         //临时文件
         //保存的文件路径
-        String datePath = Utils.getNowFormat(new Date());
-        String filePath = temporaryFilePath + "/" + datePath + "/" + fileName;
+        String filePath = realFile + "/" + dir+ "/" + fileName;
         if (copyFile(multipartFile, filePath)) {
             return Result.result(0, "上传成功", "上传失败");
         }
-        return Result.result(1, "上传成功", "上传失败", new UploadDto(fileName, temPrefix + datePath + "/" + fileName));
+        return Result.result(1, "上传成功", "上传失败", new UploadDto(fileName, prefix + dir + "/" + fileName));
 
 //        //正式文件
 //        if (flag == 2) {

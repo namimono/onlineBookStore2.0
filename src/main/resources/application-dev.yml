@@ -51,6 +51,10 @@ pagehelper:
   row-bounds-with-count: false
   reasonable: true
 
+#开发环境swagger开启
+swagger:
+  enabled: true
+  host: ${server.address}:${server.port}
 
 #指定log4j2的配置文件
 #logging:

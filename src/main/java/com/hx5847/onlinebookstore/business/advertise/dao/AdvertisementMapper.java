@@ -20,8 +20,8 @@ public interface AdvertisementMapper extends Mapper<Advertisement> {
     public List<Advertisement> getAll();
 
 
-
-    public void updateAdvertisement(Advertisement advertisement);
+    @UpdateProvider(type = AdvertiseProvider.class,method = "updateAdvertisement")
+    public int updateAdvertisement(Advertisement advertisement);
 
     @Select("select * from advertisement where location=#{location}")
     public List<Advertisement> getAdvertisementByLocation(String location);
@@ -34,4 +34,5 @@ public interface AdvertisementMapper extends Mapper<Advertisement> {
 
     @Select("select count(*) from advertisement where location  = #{location}")
     Integer selectLocationCount(String location);
+
 }

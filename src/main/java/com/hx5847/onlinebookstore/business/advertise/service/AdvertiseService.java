@@ -79,8 +79,14 @@ public class AdvertiseService {
                 return Result.result(flag,"新增成功","新增失败");
             }
         }else{
-            int flag = advertisementMapper.updateAdvertisement(advertisement);
-            return Result.result(flag,"修改成功","修改失败");
+            String location = advertisement.getLocation();
+            Integer num = advertisementMapper.selectLocationCount(location);
+            if(num >=1){
+                return Result.result(ResultCode.FAIL, "该位置已经有广告了",null);
+            }else {
+                int flag = advertisementMapper.updateAdvertisement(advertisement);
+                return Result.result(flag,"修改成功","修改失败");
+            }
         }
 
     }

@@ -1,0 +1,90 @@
+#访问地址，端口
+server:
+  servlet:
+    context-path: /
+  address: localhost
+  port: 8081
+  #配置tomcat
+  tomcat:
+    max-threads: 300
+
+#连接池
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/db_bookstore?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+    username: root
+    password:
+    druid:
+      filter:
+        wall:
+          config:
+            multi-statement-allow: true
+            none-base-statement-allow: true
+      filters: stat,log4j2
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    jedis:
+#      pool:
+#        max-idle: 50
+#        max-active: 1000
+#        min-idle: 5
+#        max-wait: -1
+#    database: 0
+#    password: ''
+#    timeout: 3600
+  main:
+    allow-bean-definition-overriding: true
+
+#mybatis
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+#pagehelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  row-bounds-with-count: false
+  reasonable: true
+
+
+#指定log4j2的配置文件
+#logging:
+#  config: classpath:log4j2-dev.xml
+
+
+#文件，图片，上传配置
+# 保存临时文件路径：临时目录 + 文件夹名称 + 产品id（如没有则不填） + 图片名称，如 D:/temporary_file/hotel/1udk392jcnosd/123.jpg
+# 保存正式文件路径：正式目录 + 文件夹名称 + 产品id（如没有则不填） + 图片名称，如 D:/realFile/hotel/1udk392jcnosd/123.jpg
+# 返回前台显示的路径：http:// + url + port + 项目名称（如没有则不填） + 文件夹名称 + 产品id（如没有则不填） + 图片名称，如 http://localhost:8080/social-hill-back/hotel/1udk392jcnosd/123.jpg
+file:
+  # 文件夹名称
+  dir:
+    hotel: hotel
+    restaurant: restaurant
+    ticket: ticket
+    meeting: meeting
+    package: package
+    official: official
+    integral: integral
+    news: news
+    room: room
+    member: member
+    company: company
+    order: order
+    user: user
+  #临时文件总目录
+  temporaryFile: D:/temporaryFile
+  #正式文件总目录
+  realFile: D:/realFile
+  #显示路径前缀
+  prefix: http://${server.address}/realFile/
+  temPrefix: http://${server.address}/temporaryFile/
+
+
+
+
+
